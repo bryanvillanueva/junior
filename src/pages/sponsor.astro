@@ -1,0 +1,160 @@
+---
+import Base from "../layouts/Base.astro";
+import Navbar from "../components/ui/navbar.astro";
+import Footer from "../components/ui/Footer.astro";
+---
+
+<Base
+  title="Sponsors | Junior de Barranquilla"
+  description="Patrocinadores y aliados comerciales del Junior de Barranquilla."
+>
+  <Navbar />
+  <main class="mx-auto max-w-6xl px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold">Sponsors</h1>
+    <p class="mt-2 text-neutral-300">
+      Nuestros patrocinadores y aliados comerciales.
+    </p>
+
+    <section class="mt-8 space-y-8">
+      <!-- Patrocinador Principal -->
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6">
+        <div class="flex items-center gap-3 mb-6">
+          <svg
+            class="w-6 h-6 text-yellow-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+            ></path>
+          </svg>
+          <h2 class="text-2xl font-bold">Patrocinador Principal</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h3 class="text-xl font-semibold text-red-400 mb-3">
+              Sponsor Principal
+            </h3>
+            <p class="text-neutral-300 mb-4">
+              Nuestro patrocinador principal nos acompaña en esta temporada,
+              apoyando el crecimiento del club y la promoción del fútbol
+              colombiano.
+            </p>
+            <div class="flex items-center gap-2 text-sm text-neutral-400">
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Alianza estratégica desde 2024
+            </div>
+          </div>
+
+          <div
+            class="bg-neutral-800 rounded-xl h-32 flex items-center justify-center"
+          >
+            <span class="text-neutral-500 text-sm">Logo del Patrocinador</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Patrocinadores Oficiales -->
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6">
+        <h2 class="text-2xl font-bold mb-6">Patrocinadores Oficiales</h2>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-neutral-800 rounded-xl p-6 text-center">
+            <div
+              class="bg-neutral-700 rounded-lg h-20 mb-4 flex items-center justify-center"
+            >
+              <span class="text-neutral-500 text-xs">Logo</span>
+            </div>
+            <h3 class="font-semibold mb-2">Sponsor Tecnología</h3>
+            <p class="text-sm text-neutral-400">
+              Proveedor de soluciones tecnológicas
+            </p>
+          </div>
+
+          <div class="bg-neutral-800 rounded-xl p-6 text-center">
+            <div
+              class="bg-neutral-700 rounded-lg h-20 mb-4 flex items-center justify-center"
+            >
+              <span class="text-neutral-500 text-xs">Logo</span>
+            </div>
+            <h3 class="font-semibold mb-2">Sponsor Bebidas</h3>
+            <p class="text-sm text-neutral-400">Bebida oficial del club</p>
+          </div>
+
+          <div class="bg-neutral-800 rounded-xl p-6 text-center">
+            <div
+              class="bg-neutral-700 rounded-lg h-20 mb-4 flex items-center justify-center"
+            >
+              <span class="text-neutral-500 text-xs">Logo</span>
+            </div>
+            <h3 class="font-semibold mb-2">Sponsor Automotriz</h3>
+            <p class="text-sm text-neutral-400">Vehículo oficial del equipo</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aliados Comerciales -->
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6">
+        <h2 class="text-2xl font-bold mb-6">Aliados Comerciales</h2>
+
+        <div class="grid sm:grid-cols-4 gap-4">
+          {
+            Array.from({ length: 8 }).map((_, i) => (
+              <div class="bg-neutral-800 rounded-lg p-4 text-center">
+                <div class="bg-neutral-700 rounded h-16 mb-3 flex items-center justify-center">
+                  <span class="text-neutral-500 text-xs">Logo {i + 1}</span>
+                </div>
+                <p class="text-xs text-neutral-400">Aliado Comercial</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Información para Patrocinadores -->
+      <div
+        class="rounded-2xl border border-neutral-800 bg-gradient-to-r from-red-900/20 to-neutral-900/20 p-6"
+      >
+        <div class="text-center">
+          <h2 class="text-2xl font-bold mb-4">
+            ¿Quieres ser nuestro patrocinador?
+          </h2>
+          <p class="text-neutral-300 mb-6 max-w-2xl mx-auto">
+            Únete a la familia rojiblanca y forma parte de la historia del
+            Junior. Ofrecemos diferentes paquetes de patrocinio adaptados a tus
+            necesidades.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <button
+              class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+            >
+              Información Comercial
+            </button>
+            <button
+              class="border border-neutral-600 hover:border-neutral-500 text-neutral-300 px-6 py-3 rounded-lg font-semibold transition"
+            >
+              Descargar Propuesta
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

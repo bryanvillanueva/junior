@@ -1,46 +1,307 @@
 ---
 import Base from "../layouts/Base.astro";
-import Navbar from "../components/ui/navbar.astro"; // 👈 cuidado con la mayúscula
+import Navbar from "../components/ui/navbar.astro";
 import Footer from "../components/ui/Footer.astro";
 import PlayerCard from "../components/players/PlayerCard";
-import data from "../content/jugadores/plantel.json";
+
+// Datos de los 3 jugadores principales
+const featuredPlayers = [
+  {
+    nombre: "Carlos Bacca",
+    posicion: "Delantero",
+    numero: 70,
+    nacionalidad: "COL",
+    altura_cm: 175,
+    peso_kg: 74,
+    foto: "/jugadores/bacca.png",
+    estadisticas: {
+      partidos: 28,
+      goles: 24,
+      asistencias: 8,
+      minutos: 2420,
+    },
+  },
+  {
+    nombre: "Teófilo Gutiérrez",
+    posicion: "Delantero",
+    numero: 29,
+    nacionalidad: "COL",
+    altura_cm: 178,
+    peso_kg: 76,
+    foto: "/jugadores/teo.png",
+    estadisticas: {
+      partidos: 15,
+      goles: 6,
+      asistencias: 4,
+      minutos: 1320,
+    },
+  },
+  {
+    nombre: "Yimmi Chará",
+    posicion: "Extremo",
+    numero: 8,
+    nacionalidad: "COL",
+    altura_cm: 168,
+    peso_kg: 77,
+    foto: "/jugadores/yimi.png",
+    estadisticas: {
+      partidos: 43,
+      goles: 4,
+      asistencias: 2,
+      minutos: 3800,
+    },
+  },
+];
 ---
 
 <Base
   title="Junior de Barranquilla | Sitio no oficial"
   description="Historia, plantel y estadísticas del Junior de Barranquilla."
 >
-  <!-- Nav transparente sobre el hero; texto blanco -->
-  <Navbar textClass="text-black bg-red-500" />
+  <!-- Nav transparente sobre el hero -->
+  <Navbar textClass="text-white" />
 
-  <main class="mx-auto max-w-6xl px-4 pt-24 md:pt-28">
-    <!-- HERO -->
-    <section class="mb-10 grid gap-6 md:grid-cols-2 items-center">
-      <div>
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+  <!-- HERO - Full Screen con degradado circular -->
+  <section
+    class="relative min-h-screen flex items-center justify-center overflow-hidden"
+  >
+    <!-- Fondo con degradado circular -->
+    <div
+      class="absolute inset-0 bg-gradient-radial from-[#B42A27] via-[#8B1F1F] to-[#70160E]"
+    >
+    </div>
+
+    <!-- Contenido del Hero -->
+    <div
+      class="relative z-10 mx-auto max-w-6xl px-4 grid gap-12 md:grid-cols-2 items-center w-full"
+    >
+      <!-- Lado izquierdo - Contenido -->
+      <div class="text-center md:text-left">
+        <h1
+          class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6"
+        >
           Junior de Barranquilla
         </h1>
-        <p class="mt-4 text-lg text-neutral-300">
-          Club Deportivo Popular Junior Fútbol Club S. A. — fundado en 1924.
-          Local en el Estadio Metropolitano Roberto Meléndez.
+        <p class="text-xl md:text-2xl text-white/90 mb-8">
+          Club Deportivo Popular Junior Fútbol Club S. A. fundado en 1924.
         </p>
-        <p class="mt-2 text-sm opacity-70">“¡Junior, tu papá!”</p>
-      </div>
-      <!-- bloque visual sin imagen para evitar 404 -->
-      <div
-        class="rounded-2xl h-56 md:h-72 border border-neutral-800 bg-gradient-to-br from-red-700/50 via-neutral-800 to-neutral-900"
-      >
-      </div>
-    </section>
 
-    <!-- PLANTEL (muestra) -->
-    <section class="mb-16">
-      <h2 class="text-2xl font-bold mb-4">Plantel (muestra)</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {data.slice(0, 6).map((p) => <PlayerCard client:visible {...p} />)}
+        <!-- Iconos de Redes Sociales -->
+        <div class="flex justify-center md:justify-start gap-6">
+          <a
+            href="#"
+            class="text-white hover:text-white/80 transition-colors"
+            aria-label="Instagram"
+          >
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12.017 0C8.396 0 7.989.013 7.041.048 6.094.082 5.52.204 5.012.388a6.5 6.5 0 0 0-2.346 1.267c-.73.66-1.296 1.445-1.604 2.346-.184.508-.306 1.082-.34 2.029C.048 7.989.035 8.396.035 12.017c0 3.624.013 4.09.048 5.038.034.946.156 1.521.34 2.029.308.9.874 1.686 1.604 2.346.66.73 1.445 1.296 2.346 1.604.508.184 1.082.306 2.029.34.95.035 1.356.048 4.979.048 3.624 0 4.09-.013 5.038-.048.946-.034 1.521-.156 2.029-.34a6.5 6.5 0 0 0 2.346-1.604c.73-.66 1.296-1.445 1.604-2.346.184-.508.306-1.082.34-2.029.035-.948.048-1.355.048-4.979 0-3.621-.013-4.09-.048-5.038-.034-.946-.156-1.521-.34-2.029a6.5 6.5 0 0 0-1.604-2.346A6.5 6.5 0 0 0 17.05.388C16.54.204 15.966.082 15.019.048 14.072.013 13.665.001 12.017.001h.002zm-.717 1.442h.718c3.136 0 3.506.012 4.727.06.78.035 1.204.166 1.486.275.374.145.64.319.92.599.28.28.453.546.598.92.11.282.24.705.275 1.485.048 1.22.058 1.589.058 4.725 0 3.135-.01 3.505-.058 4.725-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.282.11-.705.24-1.485.276-1.22.048-1.589.058-4.725.058-3.136 0-3.506-.01-4.725-.058-.78-.035-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.047-1.22-.058-1.59-.058-4.725 0-3.136.011-3.505.058-4.725.035-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276 1.096-.047 1.522-.06 4.129-.06l.595.014zm5.304 3.464a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4zm-4.597 1.236a4.867 4.867 0 1 0 0 9.734 4.867 4.867 0 0 0 0-9.734zm0 1.441a3.426 3.426 0 1 1 0 6.852 3.426 3.426 0 0 1 0-6.852z"
+              ></path>
+            </svg>
+          </a>
+
+          <a
+            href="#"
+            class="text-white hover:text-white/80 transition-colors"
+            aria-label="Facebook"
+          >
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+              ></path>
+            </svg>
+          </a>
+
+          <a
+            href="#"
+            class="text-white hover:text-white/80 transition-colors"
+            aria-label="YouTube"
+          >
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+              ></path>
+            </svg>
+          </a>
+
+          <a
+            href="#"
+            class="text-white hover:text-white/80 transition-colors"
+            aria-label="X (Twitter)"
+          >
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Lado derecho - Logo del club más grande -->
+      <div class="flex justify-center md:justify-end">
+        <div class="relative">
+          <img
+            src="/logo.png"
+            alt="Escudo Junior de Barranquilla"
+            class="w-80 h-80 md:w-96 md:h-96 object-contain filter drop-shadow-2xl"
+          />
+          <!-- Efecto de brillo sutil -->
+          <div class="absolute inset-0 bg-white/10 rounded-full blur-3xl -z-10">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicador de scroll hacia abajo -->
+    <div
+      class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DEL PLANTEL - Fondo blanco -->
+  <main class="bg-white relative z-20">
+    <section class="mx-auto max-w-6xl px-4 py-16">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Nuestras Estrellas
+        </h2>
+        <p class="text-xl text-gray-600">
+          Los íconos que hacen vibrar el Metropolitano
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {
+          featuredPlayers.map((player) => (
+            <a
+              href={`/jugador/${player.nombre.toLowerCase().replace(/\s+/g, "-").replace("í", "i")}`}
+              class="group cursor-pointer block"
+            >
+              <article class="rounded-2xl bg-gray-100 border border-gray-200 p-6 transition-all duration-300 hover:shadow-xl hover:scale-105">
+                <div class="flex items-center gap-4">
+                  <img
+                    src={player.foto}
+                    alt={player.nombre}
+                    loading="lazy"
+                    class="w-20 h-20 object-cover rounded-xl"
+                  />
+                  <div>
+                    <h3 class="text-xl font-bold leading-tight text-gray-900">
+                      {player.nombre}
+                    </h3>
+                    <p class="text-sm text-gray-600">
+                      #{player.numero} · {player.posicion} ·{" "}
+                      {player.nacionalidad}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="mt-4 grid grid-cols-4 gap-2 text-center">
+                  <div class="bg-white rounded-xl p-2 shadow-sm">
+                    <div class="text-lg font-semibold text-gray-900">
+                      {player.estadisticas.partidos}
+                    </div>
+                    <div class="text-[10px] uppercase tracking-wide text-gray-500">
+                      Part.
+                    </div>
+                  </div>
+                  <div class="bg-white rounded-xl p-2 shadow-sm">
+                    <div class="text-lg font-semibold text-gray-900">
+                      {player.estadisticas.goles}
+                    </div>
+                    <div class="text-[10px] uppercase tracking-wide text-gray-500">
+                      Goles
+                    </div>
+                  </div>
+                  <div class="bg-white rounded-xl p-2 shadow-sm">
+                    <div class="text-lg font-semibold text-gray-900">
+                      {player.estadisticas.asistencias}
+                    </div>
+                    <div class="text-[10px] uppercase tracking-wide text-gray-500">
+                      Asist.
+                    </div>
+                  </div>
+                  <div class="bg-white rounded-xl p-2 shadow-sm">
+                    <div class="text-lg font-semibold text-gray-900">
+                      {Math.floor(player.estadisticas.minutos / 90)}
+                    </div>
+                    <div class="text-[10px] uppercase tracking-wide text-gray-500">
+                      90 min
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-4 h-1 bg-gradient-to-r from-red-600 to-red-400 rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+
+                <dl class="mt-3 text-xs text-gray-500 grid grid-cols-2 gap-2">
+                  <div>
+                    <>
+                      <dt>Altura</dt>
+                      <dd>{player.altura_cm} cm</dd>
+                    </>
+                  </div>
+                  <div>
+                    <>
+                      <dt>Peso</dt>
+                      <dd>{player.peso_kg} kg</dd>
+                    </>
+                  </div>
+                </dl>
+              </article>
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Botón para ver plantel completo -->
+      <div class="text-center mt-12">
+        <a
+          href="/plantel"
+          style="background-color: #b21117;"
+          class="inline-flex items-center gap-2 hover:opacity-90 text-white px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105"
+        >
+          Ver Plantel Completo
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
       </div>
     </section>
   </main>
 
   <Footer />
 </Base>
+
+<style>
+  .bg-gradient-radial {
+    background: radial-gradient(
+      circle at center,
+      #b42a27 0%,
+      #8b1f1f 50%,
+      #70160e 100%
+    );
+  }
+</style>
