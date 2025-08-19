@@ -3,6 +3,8 @@ import Base from "../layouts/Base.astro";
 import Navbar from "../components/ui/navbar.astro";
 import Footer from "../components/ui/Footer.astro";
 import PlayerCard from "../components/players/PlayerCard";
+import Results from "../components/Results";
+import News from "../components/News";
 
 // Datos de los 3 jugadores principales
 const featuredPlayers = [
@@ -291,6 +293,12 @@ const featuredPlayers = [
       </div>
     </section>
   </main>
+
+  <!-- SECCIÓN DE RESULTADOS -->
+  <Results client:visible />
+
+  <!-- SECCIÓN DE NOTICIAS -->
+  <News client:visible />
 
   <Footer />
 </Base>
