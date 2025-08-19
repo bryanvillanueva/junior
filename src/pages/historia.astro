@@ -1,0 +1,48 @@
+---
+import Base from "../layouts/Base.astro";
+import Navbar from "../components/ui/navbar.astro";
+import Footer from "../components/ui/Footer.astro";
+---
+
+<Base
+  title="Historia | Junior de Barranquilla"
+  description="Reseña histórica breve del Junior (muestra)."
+>
+  <Navbar />
+  <main class="mx-auto max-w-6xl px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold">Historia</h1>
+
+    <section class="mt-6 space-y-4 text-neutral-300">
+      <p>
+        Fundado el 7 de agosto de 1924 en Barranquilla, Junior ha sido
+        protagonista del fútbol colombiano a lo largo de distintas décadas. Esta
+        página es un resumen de muestra pensado para probar estructura,
+        tipografías y estilos del proyecto Astro.
+      </p>
+      <p>
+        En la versión final podrás incluir una línea de tiempo, fotos históricas
+        optimizadas y enlaces a fuentes. Por ahora, mantén el texto breve y
+        enfocado en validar diseño, rendimiento y navegación.
+      </p>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold">Hitos (demo)</h2>
+      <ul class="mt-3 grid md:grid-cols-2 gap-3 text-sm text-neutral-300">
+        <li class="rounded-xl border border-neutral-800 p-3">
+          1924 · Fundación del club
+        </li>
+        <li class="rounded-xl border border-neutral-800 p-3">
+          1986 · Inauguración del Metropolitano
+        </li>
+        <li class="rounded-xl border border-neutral-800 p-3">
+          Años 90–2000 · Consolidación en liga
+        </li>
+        <li class="rounded-xl border border-neutral-800 p-3">
+          Presente · Identidad rojiblanca
+        </li>
+      </ul>
+    </section>
+  </main>
+  <Footer />
+</Base>

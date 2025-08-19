@@ -1,0 +1,37 @@
+---
+import Base from "../layouts/Base.astro";
+import Navbar from "../components/ui/navbar.astro";
+import Footer from "../components/ui/Footer.astro";
+---
+
+<Base
+  title="Estadio | Junior de Barranquilla"
+  description="Estadio Metropolitano Roberto Meléndez (muestra)."
+>
+  <Navbar />
+  <main class="mx-auto max-w-6xl px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold">Estadio Metropolitano</h1>
+
+    <div class="mt-4 grid md:grid-cols-2 gap-6 items-start">
+      <div class="space-y-3 text-neutral-300">
+        <p>
+          El “Metro” es la casa de Junior. En esta primera versión, usa este
+          texto como placeholder para validar el diseño responsive y los
+          contrastes. Más adelante podrás añadir cifras de aforo, mapa, galería
+          optimizada y datos verificados.
+        </p>
+        <ul class="text-sm list-disc pl-5">
+          <li>Ubicación: Barranquilla, Atlántico, Colombia</li>
+          <li>Uso: Fútbol profesional</li>
+          <li>Sección de datos ampliables en versión final</li>
+        </ul>
+      </div>
+      <!-- bloque visual sin imagen para evitar 404 -->
+      <div
+        class="rounded-2xl h-56 md:h-72 border border-neutral-800 bg-gradient-to-tr from-neutral-800 via-neutral-900 to-red-700/40"
+      >
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Base>

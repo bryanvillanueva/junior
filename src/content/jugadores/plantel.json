@@ -1,0 +1,18 @@
+[
+    {
+      "nombre": "Jugador Demo",
+      "posicion": "Delantero",
+      "numero": 9,
+      "nacionalidad": "COL",
+      "altura_cm": 180,
+      "peso_kg": 76,
+      "foto": "/jugadores/demo-9.jpg",
+      "estadisticas": {
+        "partidos": 28,
+        "goles": 12,
+        "asistencias": 5,
+        "minutos": 2100
+      }
+    }
+  ]
+  

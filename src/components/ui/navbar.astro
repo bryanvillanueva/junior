@@ -1,0 +1,105 @@
+---
+interface Props {
+  textClass?: string;
+}
+
+interface Link {
+  href: string;
+  label: string;
+}
+
+// Recibir la prop textClass desde la página
+const { textClass = "text-white" } = Astro.props;
+
+// 🔧 Ajusta aquí el tamaño del logo (en px)
+const logoHeight = 56;
+
+// Ítems definidos
+const left: Link[] = [
+  { href: "/", label: "Inicio" },
+  { href: "/plantel", label: "Plantel" },
+];
+const right: Link[] = [
+  { href: "/historia", label: "Historia" },
+  { href: "/estadios", label: "Estadio" },
+];
+---
+
+<!-- Fondo TRANSPARENTE, posicionado sobre el Hero -->
+<header class={`absolute inset-x-0 top-0 z-50 ${textClass}`}>
+  <nav class="mx-auto max-w-6xl px-4">
+    <div class="grid grid-cols-3 items-center h-16 md:h-20">
+      <!-- Izquierda (desktop) -->
+      <ul
+        class="hidden md:flex items-center gap-8 uppercase text-sm tracking-wide font-semibold"
+      >
+        {
+          left.map((l) => (
+            <li>
+              <a class="hover:opacity-80 transition" href={l.href}>
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Logo centrado -->
+      <a
+        href="/"
+        class="justify-self-center inline-flex items-center"
+        style={`height:${logoHeight}px`}
+      >
+        <img
+          src="/logo.png"
+          alt="Junior de Barranquilla"
+          style={`height:${logoHeight}px`}
+          class="w-auto object-contain"
+        />
+      </a>
+
+      <!-- Derecha (desktop) -->
+      <ul
+        class="hidden md:flex items-center gap-8 justify-self-end uppercase text-sm tracking-wide font-semibold"
+      >
+        {
+          right.map((l) => (
+            <li>
+              <a class="hover:opacity-80 transition" href={l.href}>
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Botón móvil (solo < md) -->
+      <button
+        id="nav-toggle"
+        class="md:hidden justify-self-end p-2 rounded outline-none"
+        aria-label="Abrir menú">☰</button
+      >
+    </div>
+
+    <!-- Menú móvil (sigue transparente) -->
+    <div id="mobile-menu" class="md:hidden hidden pt-2 pb-4">
+      <ul class="grid gap-2 uppercase text-sm tracking-wide font-semibold">
+        {
+          [...left, ...right].map((l) => (
+            <li>
+              <a class="block py-2" href={l.href}>
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
+
+  <script>
+    const btn = document.getElementById("nav-toggle");
+    const menu = document.getElementById("mobile-menu");
+    btn?.addEventListener("click", () => menu?.classList.toggle("hidden"));
+  </script>
+</header>
